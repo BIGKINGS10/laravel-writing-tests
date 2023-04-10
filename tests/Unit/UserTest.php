@@ -56,4 +56,9 @@ class UserTest extends TestCase
             'name' => 'Mike'
         ]);
     }
+
+    public function test_if_seeders_works(){
+        $this->seed(); //seed all seeders in the Seeders folder
+        //php artisan db:seed
+    }
 }
