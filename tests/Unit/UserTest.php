@@ -38,4 +38,22 @@ class UserTest extends TestCase
 
         $this->assertTrue(true);
     }
+
+    public function test_it_stores_new_users(){
+        $response = $this->post('/register',[
+            'name' => 'Kingsley',
+            'email' => 'kingsley@gmail.com',
+            'password' => '12345678',
+            'password_confirmation' => '12345678'
+        ]);
+
+        $response->assertRedirect('/home');
+    }
+
+    public function test_database(){
+        // $this->assertDatabaseHas('users',[
+        $this->assertDatabaseMissing('users',[
+            'name' => 'Mike'
+        ]);
+    }
 }
